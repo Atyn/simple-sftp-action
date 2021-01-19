@@ -1,0 +1,23 @@
+name: Simple SFTP
+description: 'Upload files recursively using FTP/SFTP'
+author: 'Atyn'
+runs:
+  using: 'composite'
+  steps:
+    - run: cd ${{ github.event.inputs.localdir }}
+      shell: bash
+    - run: |
+        echo "
+          $(find . -type d | sed -e 's/^/mkdir /;')
+          mput -r .
+          exit
+        " > /tmp/commands.ftp
+        sftp ${{ github.event.inputs.url }} < /tmp/commands.ftp
+      shell: bash
+inputs:
+  url:
+    description: 'URL to the SFTP server. Example: sftp://USERNAME:PASSWORD@example.com/remote-directory'
+    required: false
+  localdir:
+    description: 'The directory that should be uploaded'
+    required: false
