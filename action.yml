@@ -1,4 +1,7 @@
 name: Simple SFTP
+branding:
+  icon: send
+  color: blue
 description: 'Upload files recursively using FTP/SFTP'
 author: 'Atyn'
 runs:
