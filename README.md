@@ -8,7 +8,7 @@ Simple Action for uploading directories with FTP/SFTP
 jobs:
   - upload:
       - name: Upload build to hosting environment
-        uses: Atyn/Simple-SFTP
+        uses: Atyn/simple-sftp-action@0.0.2
         with:
           url: sftp://USERNAME:PASSWORD@example.com/remote-directory
           local-directory: build-output
